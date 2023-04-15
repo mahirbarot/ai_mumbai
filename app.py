@@ -27,7 +27,7 @@ col3.metric("Accuracy", "RandomForest", "97.56")
 
 def predict_price1(Location,Area,bhk,Gymnasium,Lift):
 
-        model=pickle.load(open('rf2.pickle','rb'))
+        model=pickle.load(open('dt.pickle','rb'))
 
         st.write("")
         st.subheader("Processing inputs...")
