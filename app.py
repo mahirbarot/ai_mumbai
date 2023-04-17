@@ -25,9 +25,14 @@ col1.metric("Accuracy", "LinearReg", "89.93")
 col2.metric("Accuracy", "DecisionTree", "93.41")
 col3.metric("Accuracy", "RandomForest", "97.56")
 
-def predict_price1(Location,Area,bhk,Gymnasium,Lift):
-
-        model=pickle.load(open('dt.pickle','rb'))
+def predict_price1(Location,Area,bhk,Gymnasium,Lift,model_name):
+        #'LinearReg','RandomForest','DecisionTree'
+        if(model_name == 'LinearReg'):
+                model=pickle.load(open('lrm.pickle','rb'))
+        elif(model_name == 'RandomForest'):
+                model=pickle.load(open('rf2.pickle','rb'))
+        elif(model_name == 'DecisionTree'):
+                model=pickle.load(open('dt.pickle','rb'))
 
         st.write("")
         st.subheader("Processing inputs...")
@@ -53,8 +58,8 @@ def predict_price1(Location,Area,bhk,Gymnasium,Lift):
 
         #return model.predict([x])[0]
         ans=model.predict([x])[0]
-        ans=round(ans,2)
-        st.header(str(ans) +" Lakhs")
+        ans2=round(ans,5)
+        st.header(str(ans2) +" Lakhs")
 
 
 
@@ -88,6 +93,6 @@ else:
 
 
 if st.button("Predict the price:"):     
-        #model=st.selectbox("Choose a model for prediction...",('LinearReg','RandomForest','DecisionTree'),index=1)
-        predict_price1(loc,area,bhk,gym_val,lift_val)
+        model=st.selectbox("Choose a model for prediction...",('LinearReg','RandomForest','DecisionTree'),index=1)
+        predict_price1(loc,area,bhk,gym_val,lift_val,model)
         
