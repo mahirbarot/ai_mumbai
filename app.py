@@ -7,7 +7,7 @@ import time
 
 st.set_page_config(
         page_title="A.I end sem project",
-        page_icon="money",
+        page_icon="house_buildings",
         layout='centered',
     )
 
