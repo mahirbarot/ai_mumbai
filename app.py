@@ -92,7 +92,9 @@ else:
 
 
 
-if st.button("Predict the price:"):     
-        model=st.selectbox("Choose a model for prediction...",('LinearReg','RandomForest','DecisionTree'),index=1)
-        predict_price1(loc,area,bhk,gym_val,lift_val,model)
+model=st.selectbox("Choose a model for prediction...",('LinearReg','RandomForest','DecisionTree'),index=1)
         
+
+if st.button("Predict the price:"):     
+        predict_price1(loc,area,bhk,gym_val,lift_val,model)
+                
